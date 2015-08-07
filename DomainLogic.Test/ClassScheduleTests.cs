@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainLogic.Test
@@ -20,6 +21,12 @@ namespace DomainLogic.Test
             "Advanced Office Warfare: History of Cubicle Siege Engines",
             "Rubber Band Catapults 101: ",
             "Paper Jet Engines: Introduction to Paper Airplanes"
+        };
+
+        private readonly string[] _testListOfCoursesInvalidList = {
+            "Advanced Pyrotechnics - Introduction to Fire",
+            "Introduction to Fire",
+            "A: B: C: "
         };
 
         [TestInitialize]
@@ -47,5 +54,14 @@ namespace DomainLogic.Test
             _testClassSchedule.ListOfCourses = _testListOfCoursesExpandedList;
             Assert.AreEqual(_testListOfCoursesExpandedList[0], _testClassSchedule.ListOfCourses[0]);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ListOfCoursesPropertyCannotAcceptInvalidData()
+        {
+            _testClassSchedule.ListOfCourses = _testListOfCoursesInvalidList;
+        }
+
+
     }
 }
