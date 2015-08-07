@@ -53,6 +53,12 @@
     <Compile Include="ClassScheduleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainLogic\DomainLogic.csproj">
+      <Project>{9b10d360-e4ce-4d50-a198-6e3e0b9ac3c6}</Project>
+      <Name>DomainLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
