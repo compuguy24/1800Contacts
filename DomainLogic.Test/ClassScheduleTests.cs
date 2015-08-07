@@ -13,6 +13,15 @@ namespace DomainLogic.Test
             "Introduction to Fire: "
         };
 
+        private readonly string[] _testListOfCoursesExpandedList = {
+            "Introduction to Paper Airplanes: ",
+            "Advanced Throwing Techniques: Introduction to Paper Airplanes",
+            "History of Cubicle Siege Engines: Rubber Band Catapults 101",
+            "Advanced Office Warfare: History of Cubicle Siege Engines",
+            "Rubber Band Catapults 101: ",
+            "Paper Jet Engines: Introduction to Paper Airplanes"
+        };
+
         [TestInitialize]
         public void Setup()
         {
@@ -30,6 +39,13 @@ namespace DomainLogic.Test
         {
             Assert.IsNotNull(_testClassSchedule);
             Assert.AreEqual(_testListOfCoursesBasicList[0], _testClassSchedule.ListOfCourses[0]);
+        }
+
+        [TestMethod]
+        public void ListOfCoursesPropertyAcceptsListOfCourses()
+        {
+            _testClassSchedule.ListOfCourses = _testListOfCoursesExpandedList;
+            Assert.AreEqual(_testListOfCoursesExpandedList[0], _testClassSchedule.ListOfCourses[0]);
         }
     }
 }
