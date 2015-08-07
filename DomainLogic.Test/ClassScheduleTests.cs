@@ -8,10 +8,15 @@ namespace DomainLogic.Test
     {
         private ClassSchedule _testClassSchedule;
 
+        private readonly string[] _testListOfCoursesBasicList = {
+            "Advanced Pyrotechnics: Introduction to Fire",
+            "Introduction to Fire: "
+        };
+
         [TestInitialize]
         public void Setup()
         {
-            _testClassSchedule = new ClassSchedule();
+            _testClassSchedule = new ClassSchedule(_testListOfCoursesBasicList);
         }
 
         [TestCleanup]
@@ -21,9 +26,10 @@ namespace DomainLogic.Test
         }
 
         [TestMethod]
-        public void Constructor()
+        public void ConstructorAcceptsListOfCourses()
         {
             Assert.IsNotNull(_testClassSchedule);
+            Assert.AreEqual(_testListOfCoursesBasicList[0], _testClassSchedule.ListOfCourses[0]);
         }
     }
 }
