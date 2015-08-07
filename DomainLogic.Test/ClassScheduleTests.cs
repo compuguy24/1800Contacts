@@ -21,7 +21,7 @@ namespace DomainLogic.Test
         }
 
         [TestMethod]
-        public void ConstructorAcceptsListOfCourses()
+        public void Constructor()
         {
             Assert.IsNotNull(_testClassSchedule);
         }
