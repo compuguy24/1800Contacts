@@ -25,7 +25,10 @@ namespace DomainLogic.Test
 
         private readonly string[] _testListOfCoursesInvalidList = {
             "Advanced Pyrotechnics - Introduction to Fire",
-            "Introduction to Fire",
+            "Introduction to Fire"
+        };
+
+        private readonly string[] _testListOfCoursesMultiplePrerequisites = {
             "A: B: C: "
         };
 
@@ -62,6 +65,12 @@ namespace DomainLogic.Test
             _testClassSchedule.ListOfCourses = _testListOfCoursesInvalidList;
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ListOfCoursesPropertyCannotAcceptMultiplePrequisites()
+        {
+            _testClassSchedule.ListOfCourses = _testListOfCoursesMultiplePrerequisites;
+        }
 
     }
 }
