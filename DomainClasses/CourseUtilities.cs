@@ -17,9 +17,21 @@ namespace DomainClasses
             {
                 foreach (var rootCourse in courses)
                 {
-                    if (rootCourse.Dependency != null)
+                    var courseInChain = rootCourse;
+                    while (courseInChain.Dependency != null)
                     {
-                        if (course.Title == rootCourse.Title || course.Title == rootCourse.Dependency.Title) return;
+                        if (course.Dependency == null)
+                        {
+                            if (course.Title == courseInChain.Title || course.Title == courseInChain.Dependency.Title) return;
+                        }
+                        else
+                        {
+                            if (course.Title == courseInChain.Dependency.Title && courseInChain.Dependency.Dependency == null)
+                            {
+                                courseInChain.Dependency = course;
+                                return;
+                            }   
+                        }
                     }
                 }
             }
