@@ -130,5 +130,37 @@ namespace DomainClasses.Test
             Assert.AreEqual("C", _testCourses[0].Dependency.Title);
             Assert.IsNull(_testCourses[0].Dependency.Dependency);
         }
+
+        [TestMethod]
+        public void AddComplexList()
+        {
+            var course = CourseUtilities.CreateCourse("A: ");
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse("B: A");
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse("C: D");
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse("E: C");
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse("D: ");
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse("F: A");
+            _testCourses.AddCourse(course);
+
+            Assert.AreEqual(3, _testCourses.Count);
+
+            Assert.AreEqual("B", _testCourses[0].Title);
+            Assert.AreEqual("A", _testCourses[0].Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency);
+
+            Assert.AreEqual("E", _testCourses[1].Title);
+            Assert.AreEqual("C", _testCourses[1].Dependency.Title);
+            Assert.AreEqual("D", _testCourses[1].Dependency.Dependency.Title);
+            Assert.IsNull(_testCourses[1].Dependency.Dependency.Dependency);
+
+            Assert.AreEqual("F", _testCourses[2].Title);
+            Assert.AreEqual("A", _testCourses[2].Dependency.Title);
+            Assert.IsNull(_testCourses[2].Dependency.Dependency);
+        }
     }
 }
