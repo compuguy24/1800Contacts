@@ -8,6 +8,21 @@ namespace DomainClasses.Test
     {
         private string _testCourseWithNoDependency = "A: ";
         private string _testCourseWithDependency = "B: A";
+        private string _testNonMatchingEntry = "X: Y";
+        private string _testPartialMatchingDependencyEntry = "A: C";
+        private List<Course> _testCourses;
+            
+        [TestInitialize]
+        public void Setup()
+        {
+            _testCourses = new List<Course>();
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            _testCourses = null;
+        }
 
         [TestMethod]
         public void GetCourseObjectFromStringWithNoDependency()
@@ -31,25 +46,58 @@ namespace DomainClasses.Test
         public void AddToEmptyLinkedList()
         {
             var course = CourseUtilities.CreateCourse(_testCourseWithNoDependency);
-            var courses = new List<Course>();
-            courses.AddCourse(course);
-            Assert.AreEqual(1, courses.Count);
-            Assert.AreEqual("A", courses[0].Title);
-            Assert.IsNull(courses[0].Dependency);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(1, _testCourses.Count);
+            Assert.AreEqual("A", _testCourses[0].Title);
+            Assert.IsNull(_testCourses[0].Dependency);
         }
 
         [TestMethod]
         public void AddToLinkedListWithSingleMatchingEntry()
         {
-            var courses = new List<Course>();
             var course = CourseUtilities.CreateCourse(_testCourseWithDependency);
-            courses.AddCourse(course);
+            _testCourses.AddCourse(course);
             course = CourseUtilities.CreateCourse(_testCourseWithNoDependency);
-            courses.AddCourse(course);
-            Assert.AreEqual(1, courses.Count);
-            Assert.AreEqual("B", courses[0].Title);
-            Assert.AreEqual("A", courses[0].Dependency.Title);
-            Assert.IsNull(courses[0].Dependency.Dependency);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(1, _testCourses.Count);
+            Assert.AreEqual("B", _testCourses[0].Title);
+            Assert.AreEqual("A", _testCourses[0].Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency);
+        }
+
+        [TestMethod]
+        public void AddToLinkedListWithSingleNonMatchingEntry()
+        {
+            var course = CourseUtilities.CreateCourse(_testCourseWithDependency);
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse(_testNonMatchingEntry);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(2, _testCourses.Count);
+
+            Assert.AreEqual("B", _testCourses[0].Title);
+            Assert.AreEqual("A", _testCourses[0].Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency);
+
+            Assert.AreEqual("X", _testCourses[1].Title);
+            Assert.AreEqual("Y", _testCourses[1].Dependency.Title);
+            Assert.IsNull(_testCourses[1].Dependency.Dependency);
+        }
+
+        [TestMethod]
+        public void AddToLinkedListOnRightOfChain()
+        {
+            var course = CourseUtilities.CreateCourse(_testCourseWithDependency);
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse(_testPartialMatchingDependencyEntry);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(1, _testCourses.Count);
+
+            Assert.AreEqual("B", _testCourses[0].Title);
+            Assert.AreEqual("A", _testCourses[0].Dependency.Title);
+            Assert.IsNotNull(_testCourses[0].Dependency.Dependency);
+
+            Assert.AreEqual("C", _testCourses[0].Dependency.Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency.Dependency);
         }
     }
 }
