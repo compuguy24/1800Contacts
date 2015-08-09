@@ -32,6 +32,7 @@ namespace DomainClasses
                                 return;
                             }   
                         }
+                        courseInChain = courseInChain.Dependency;
                     }
                 }
             }

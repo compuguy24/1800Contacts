@@ -99,5 +99,22 @@ namespace DomainClasses.Test
             Assert.AreEqual("C", _testCourses[0].Dependency.Dependency.Title);
             Assert.IsNull(_testCourses[0].Dependency.Dependency.Dependency);
         }
+
+        [TestMethod]
+        public void AddToLinkedListOnLeftOfChain()
+        {
+            var course = CourseUtilities.CreateCourse(_testPartialMatchingDependencyEntry);
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse(_testCourseWithDependency);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(1, _testCourses.Count);
+
+            Assert.AreEqual("B", _testCourses[0].Title);
+            Assert.AreEqual("A", _testCourses[0].Dependency.Title);
+            Assert.IsNotNull(_testCourses[0].Dependency.Dependency);
+
+            Assert.AreEqual("C", _testCourses[0].Dependency.Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency.Dependency);
+        }
     }
 }
