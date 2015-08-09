@@ -71,6 +71,5 @@ namespace DomainLogic.Test
         {
             _testClassSchedule.ListOfCourses = _testListOfCoursesMultiplePrerequisites;
         }
-
     }
 }
