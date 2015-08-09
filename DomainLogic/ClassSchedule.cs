@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using DomainClasses;
 
 namespace DomainLogic
 {
@@ -27,6 +29,16 @@ namespace DomainLogic
         {
             var rgx = new Regex(": ");
             return courses.All(course => rgx.Matches(course).Count == 1);
+        }
+
+        public string GetSortedClassSchedule()
+        {
+            var result = new List<Course>();
+            foreach (var course in ListOfCourses.Select(CourseUtilities.CreateCourse))
+            {
+                result.AddCourse(course);
+            }
+            return SortCourses.Sort(result, x => x.Dependency);
         }
     }
 }

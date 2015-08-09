@@ -70,5 +70,18 @@ namespace DomainLogic.Test
         {
             _testClassSchedule.ListOfCourses = _testListOfCoursesMultiplePrerequisites;
         }
+
+        [TestMethod]
+        public void SortClassList()
+        {
+            _testClassSchedule.ListOfCourses = CreateClassList();
+            var sortedList = _testClassSchedule.GetSortedClassSchedule();
+            Assert.AreEqual("A, B, D, C, E, F", sortedList);
+        }
+
+        private string[] CreateClassList()
+        {
+            return new[] { "A: ", "B: A", "C: D", "E: C", "D: ", "F: A" };
+        }
     }
 }

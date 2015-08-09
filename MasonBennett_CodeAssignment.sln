@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainClasses", "DomainClas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseScheduleConsole", "CourseScheduleConsole\CourseScheduleConsole.csproj", "{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceTopologicalSort", "ReferenceTopologicalSearch\ReferenceTopologicalSort.csproj", "{C3483560-FFA1-474F-AB1D-58541B9EE819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceTopologicalSort.Test", "TopologicalSort.Test\ReferenceTopologicalSort.Test.csproj", "{3B3AAF5B-CEA3-48C5-8818-16956E813FF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3483560-FFA1-474F-AB1D-58541B9EE819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3483560-FFA1-474F-AB1D-58541B9EE819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3483560-FFA1-474F-AB1D-58541B9EE819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3483560-FFA1-474F-AB1D-58541B9EE819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B3AAF5B-CEA3-48C5-8818-16956E813FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B3AAF5B-CEA3-48C5-8818-16956E813FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B3AAF5B-CEA3-48C5-8818-16956E813FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B3AAF5B-CEA3-48C5-8818-16956E813FF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
