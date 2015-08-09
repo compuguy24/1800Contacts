@@ -16,6 +16,7 @@ namespace CourseScheduleConsole
         };
 
         //Notes: 
+
         // o I'm including a reference project "ReferenceTopologicalSort" that I used to research topological sort (CodeProject)
         // o Referenced http://www.codeproject.com/Articles/869059/Topological-sorting-in-Csharp
 
