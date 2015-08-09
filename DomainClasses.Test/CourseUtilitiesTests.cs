@@ -34,6 +34,22 @@ namespace DomainClasses.Test
             var courses = new List<Course>();
             courses.AddCourse(course);
             Assert.AreEqual(1, courses.Count);
+            Assert.AreEqual("A", courses[0].Title);
+            Assert.IsNull(courses[0].Dependency);
+        }
+
+        [TestMethod]
+        public void AddToLinkedListWithSingleMatchingEntry()
+        {
+            var courses = new List<Course>();
+            var course = CourseUtilities.CreateCourse(_testCourseWithDependency);
+            courses.AddCourse(course);
+            course = CourseUtilities.CreateCourse(_testCourseWithNoDependency);
+            courses.AddCourse(course);
+            Assert.AreEqual(1, courses.Count);
+            Assert.AreEqual("B", courses[0].Title);
+            Assert.AreEqual("A", courses[0].Dependency.Title);
+            Assert.IsNull(courses[0].Dependency.Dependency);
         }
     }
 }
