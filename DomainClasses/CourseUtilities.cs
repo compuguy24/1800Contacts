@@ -37,9 +37,14 @@ namespace DomainClasses
                             {
                                 courseInChain.Dependency = course;
                                 return;
-                            }   
+                            }
                         }
                         courseInChain = courseInChain.Dependency;
+                    }
+                    if (course.Title == courseInChain.Title && course.Dependency != null)
+                    {
+                        courseInChain.Dependency = new Course(course.Dependency.Title, null);
+                        return;
                     }
                 }
             }
