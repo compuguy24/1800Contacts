@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainClasses.Test", "Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainClasses", "DomainClasses\DomainClasses.csproj", "{B6CF2144-EE65-4CE6-BED9-BF1DEF4813BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseScheduleConsole", "CourseScheduleConsole\CourseScheduleConsole.csproj", "{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B6CF2144-EE65-4CE6-BED9-BF1DEF4813BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6CF2144-EE65-4CE6-BED9-BF1DEF4813BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6CF2144-EE65-4CE6-BED9-BF1DEF4813BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D49A0C-DFB5-4CEA-B05E-5C8785A6E125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
