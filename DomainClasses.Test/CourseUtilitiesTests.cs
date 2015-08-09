@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainClasses.Test
 {
@@ -24,6 +25,15 @@ namespace DomainClasses.Test
             Assert.IsNotNull(course.Dependency);
             Assert.AreEqual("A", course.Dependency.Title);
             Assert.IsNull(course.Dependency.Dependency);
+        }
+
+        [TestMethod]
+        public void AddToEmptyLinkedList()
+        {
+            var course = CourseUtilities.CreateCourse(_testCourseWithNoDependency);
+            var courses = new List<Course>();
+            courses.AddCourse(course);
+            Assert.AreEqual(1, courses.Count);
         }
     }
 }
