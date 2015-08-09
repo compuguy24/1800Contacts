@@ -17,6 +17,13 @@ namespace DomainClasses
             {
                 foreach (var rootCourse in courses)
                 {
+                    if (course.Dependency != null && rootCourse.Title == course.Dependency.Title)
+                    {
+                        course.Dependency = rootCourse;
+                        courses.Remove(rootCourse);
+                        courses.Add(course);
+                        return;
+                    }
                     var courseInChain = rootCourse;
                     while (courseInChain.Dependency != null)
                     {
