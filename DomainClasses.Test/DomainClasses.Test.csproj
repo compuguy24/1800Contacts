@@ -53,6 +53,12 @@
     <Compile Include="CourseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
+      <Project>{b6cf2144-ee65-4ce6-bed9-bf1def4813ba}</Project>
+      <Name>DomainClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
