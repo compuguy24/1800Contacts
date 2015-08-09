@@ -116,5 +116,19 @@ namespace DomainClasses.Test
             Assert.AreEqual("C", _testCourses[0].Dependency.Dependency.Title);
             Assert.IsNull(_testCourses[0].Dependency.Dependency.Dependency);
         }
+
+        [TestMethod]
+        public void AddToRightOfChainPartialNode()
+        {
+            var course = CourseUtilities.CreateCourse(_testCourseWithNoDependency);
+            _testCourses.AddCourse(course);
+            course = CourseUtilities.CreateCourse(_testPartialMatchingDependencyEntry);
+            _testCourses.AddCourse(course);
+            Assert.AreEqual(1, _testCourses.Count);
+
+            Assert.AreEqual("A", _testCourses[0].Title);
+            Assert.AreEqual("C", _testCourses[0].Dependency.Title);
+            Assert.IsNull(_testCourses[0].Dependency.Dependency);
+        }
     }
 }
